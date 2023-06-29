@@ -1,5 +1,5 @@
 #     Jão     - 
-#     Gabriel -
+#     Gabriel Akio Urakawa - 11795912
 #     Samuka  -
 #     Vinícius Santos Monteiro  - 11932463
 
