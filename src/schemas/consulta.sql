@@ -9,8 +9,8 @@ SELECT c.nome, e.nome, COUNT(d.nro_serie) AS qtd_dispositivos
 		WHERE dec.id_comunidade = dec2.id_comunidade
     	AND dec.cnpj_empresa <> dec2.cnpj_empresa
 	)
-	GROUP BY c.nome,  e.nome
-	HAVING COUNT(c.nome) = 1;
+	GROUP BY c.nome
+	HAVING COUNT(DISTINCT dec.empresa) = 1;
 
 
 
