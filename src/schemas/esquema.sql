@@ -76,7 +76,7 @@ create table usuario_dispositivo(
 
 -- Tabela Comunidade
 create table comunidade(
-    registro serial,
+    registro smallint,
     nome varchar(60),
     qtd_membros integer,
     representante varchar(60),
@@ -128,9 +128,10 @@ create table empresa(
 create table dispositivo_comunidade_empresa(
     dispositivo char(30),
     empresa char(18),
-    comunidade integer not null, -- registro da comunidade
+    comunidade integer, -- registro da comunidade
 
-    constraint pk_dispositivo_comunidade_empresa primary key (dispositivo, empresa),
+    constraint pk_dispositivo_comunidade_empresa primary key (dispositivo, empresa, comunidade),
+    constraint un_dispositivo_comunidade_empresa unique (dispositivo),
     constraint fk1_dispositivo_comunidade_empresa foreign key (dispositivo) references dispositivo(nro_serie) on delete cascade,
     constraint fk2_dispositivo_comunidade_empresa foreign key (empresa) references empresa(cnpj) on delete cascade,
     constraint fk3_dispositivo_comunidade_empresa foreign key (comunidade) references comunidade(registro) on delete cascade

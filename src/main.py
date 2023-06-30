@@ -9,10 +9,8 @@ def main():
     db.connect()
 
     # Execução da interface
-
-    # i.printHello()
-    # i.printHeader()
-    # i.selectOption(i.getOption(), sis)
+    inter.initialSetup()
+    inter.selectOption(inter.getOption(), db)
 
     # Encerra a conexão com o banco de dados
     db.closeConn()

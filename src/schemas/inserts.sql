@@ -81,22 +81,22 @@ INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('YFXr3cug58LvhmqR
 
 -- ## Tabela Comunidade ##
 
-INSERT INTO comunidade (nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values ('Vila Tepequém', 150, 'Pedro Souza Mendes', 'Brasil', 'Roraima', 'Amajari', null, 'Comunitario Simples', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
-INSERT INTO comunidade (nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values ('Aldeia Txoude', 50, 'Iaci Araraí Menezes', 'Brasil', 'Tocantins', 'Lagoa da Confusão', null, 'Comunitario Extra', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
-INSERT INTO comunidade (nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values ('4° Pelotão Especial de Fronteira', 250, 'Luiz Alves Pereira', 'Brasil', 'Roraima', 'Alto Alegre', null, 'Comunitario Padrão', TO_DATE('2020-01-01', 'YYYY-MM-DD'), TO_DATE('2030-01-01', 'YYYY-MM-DD'));
+INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
+    values (1, 'Vila Tepequém', 150, 'Pedro Souza Mendes', 'Brasil', 'Roraima', 'Amajari', null, 'Comunitario Simples', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
+INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
+    values (2, 'Aldeia Txoude', 50, 'Iaci Araraí Menezes', 'Brasil', 'Tocantins', 'Lagoa da Confusão', null, 'Comunitario Extra', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
+INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
+    values (3, '4° Pelotão Especial de Fronteira', 250, 'Luiz Alves Pereira', 'Brasil', 'Roraima', 'Alto Alegre', null, 'Comunitario Padrão', TO_DATE('2020-01-01', 'YYYY-MM-DD'), TO_DATE('2030-01-01', 'YYYY-MM-DD'));
 
 
 -- ## Tabela Usuário_Comunidade ##
 
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('500.047.672-76', 2);
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('864.076.055-12', 2);
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('444.136.372-91', 3);
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('011.654.052-45', 3);
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('465.040.701-05', 4);
-INSERT INTO usuario_comunidade (usuario, comunidade) values ('378.697.441-15', 4);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('500.047.672-76', 1);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('864.076.055-12', 1);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('444.136.372-91', 2);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('011.654.052-45', 2);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('465.040.701-05', 3);
+INSERT INTO usuario_comunidade (usuario, comunidade) values ('378.697.441-15', 3);
 
 
 -- ## Tabela Empresa ##
@@ -112,17 +112,17 @@ INSERT INTO empresa (cnpj, nome, razao_social, contato, pais, estado, cidade, ce
 -- ## Tabela Dispositivo_Comunidade_Empresa ## ******************************
 
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('r6c4TndrUJG4cdpUPQb3H5kLvF5eJC', '88.400.916/0001-80', 2);
+    values ('r6c4TndrUJG4cdpUPQb3H5kLvF5eJC', '88.400.916/0001-80', 1);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('YFXr3cug58LvhmqRaF8dqTL59V4KY5', '88.400.916/0001-80', 2);
+    values ('YFXr3cug58LvhmqRaF8dqTL59V4KY5', '88.400.916/0001-80', 1);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('rdQTBimmruuepJiDmVxC3J7gHYMNTj', '56.693.744/0001-93', 4);
+    values ('rdQTBimmruuepJiDmVxC3J7gHYMNTj', '56.693.744/0001-93', 3);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('QTg8pjD6Bqm2e3Eqwdk4Sdah8nRxEb', '56.693.744/0001-93', 4);
+    values ('QTg8pjD6Bqm2e3Eqwdk4Sdah8nRxEb', '56.693.744/0001-93', 3);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('kKR3ap6TQTJ7eqxX2knpP2wSRdxpFc', '13.648.825/0001-69', 3);
+    values ('kKR3ap6TQTJ7eqxX2knpP2wSRdxpFc', '13.648.825/0001-69', 2);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
-    values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', '13.648.825/0001-69', 4);
+    values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', '13.648.825/0001-69', 3);
 
 
 -- ## Tabela Estação ##
