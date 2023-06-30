@@ -28,6 +28,7 @@ class Connection:
     def executeSQL(self, sql):
         self.cursor.execute(sql)
 
+    # Executa a query sql, permitindo o uso de máscara de valores
     def executeSQLValores(self, sql, valores):
         self.cursor.execute(sql, valores)
 

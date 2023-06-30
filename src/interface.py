@@ -4,6 +4,7 @@ from datetime import datetime
 
 LINE_SIZE = 50
 
+# Interface do sistema
 def initialSetup():
     print('*' * LINE_SIZE)
     print('Escolha uma das opções a seguir:')
@@ -20,14 +21,17 @@ def initialSetup():
 
     print('0 - Sair do sistema')
 
+# Retorna a opção escolhida pelo usuário
 def getOption():
     return int(input('Digite a opção desejada: '))
 
+# Loop do sistema
 def loop(db):
     time.sleep(1)
     initialSetup()
     selectOption(getOption(), db)
 
+# Seleção de opções da interface
 def selectOption(option, db):
     if option == 0:
         print('Encerrando o sistema...')
@@ -54,6 +58,7 @@ def selectOption(option, db):
 
     loop(db)
 
+# Lista os usuários existentes no banco
 def showUsuarios(db):
     sql = '''
     select * from usuario order by nome asc;
@@ -61,6 +66,7 @@ def showUsuarios(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Lista as comunidades existentes no banco
 def showComunidades(db):
     sql = '''
     select * from comunidade order by nome asc;
@@ -68,6 +74,7 @@ def showComunidades(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Lista as empresas existentes no banco
 def showEmpresas(db):
     sql = '''
     select * from empresa order by nome asc;
@@ -75,6 +82,7 @@ def showEmpresas(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Lista os dispositivos existentes no banco
 def showDispositivos(db):
     sql = '''
     select * from dispositivo order by nro_serie asc;
@@ -82,6 +90,8 @@ def showDispositivos(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Lista os planos pessoais existentes e seus benefícios,
+# ordenados pelo nome do plano
 def showPlanosPessoais(db):
     sql = '''
     select * from pessoal p
@@ -91,6 +101,8 @@ def showPlanosPessoais(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Lista os planos comunitários existentes e seus benefícios,
+# ordenados pelo nome do plano
 def showPlanosComunitarios(db):
     sql = '''
     select * from comunitario c
@@ -100,37 +112,47 @@ def showPlanosComunitarios(db):
     db.executeSQL(sql)
     db.showTable()
 
+# Realiza a inserção de um novo usuário no banco
 def insertUsuario(db):
-    planosExistentes = getPlanosPessoais(db)
+    planosExistentes = getPlanosPessoais(db) # Armazena os planos existentes
 
+    # Lê e valida o cpf
     cpf = input('Digite o CPF do usuário (xxx.xxx.xxx-xx): ')
     validate(cpf, validateCPF, notnull=True)
 
+    # Lê e valida o nome
     nome = input('Digite o nome do usuário (a-zA-Z): ')
     validate(nome, validateCharacterString, maxSize=60)
 
+    # Lê e valida a data de nascimento
     data_nasc = input('Digite a data de nascimento do usuário (d-m-y): ')
     validate(data_nasc, validateDate)
-    while datetime.strptime(data_nasc, "%d-%m-%Y") >= datetime.today():
+    while datetime.strptime(data_nasc, "%d-%m-%Y") >= datetime.today(): # Verifica se a data de nascimento é válida
         print('Data de nascimento inválida!')
         data_nasc = input('Digite a data de nascimento do usuário: ')
         validate(data_nasc, validateDate(data_nasc))
 
+    # Lê e valida o país
     pais = input('Digite o país do usuário: ')
     validate(pais, validateCharacterString, maxSize=30)
 
+    # Lê e valida o estado
     estado = input('Digite o estado do usuário: ')
     validate(estado, validateCharacterString, maxSize=30)
 
+    # Lê e valida a cidade
     cidade = input('Digite a cidade do usuário: ')
     validate(cidade, validateCharacterString, maxSize=30)
 
+    # Lê e valida o CEP
     cep = input('Digite o CEP do usuário: ')
     validate(cep, validateCEP, maxSize=15)
 
+    # Lê e valida a rua
     rua = input('Digite a rua do usuário: ')
     validate(rua, validateString, maxSize=60)
 
+    # Lê e valida o número da casa
     numero = input('Digite o número da casa do usuário: ')
     while not numero.isnumeric() or int(numero) <= 0 or int(numero) > 32767:
         print('Número inválido!')
@@ -138,22 +160,27 @@ def insertUsuario(db):
 
     numero = int(numero)
 
-    print(f'Planos existentes: {planosExistentes}')
+    # Lê e valida o plano do usuário
+    print(f'Planos existentes: {planosExistentes}') # Mostra os planos existentes
     plano = input('Digite o plano do usuário: ')
     while plano not in planosExistentes or len(plano) > 30:
         print('Plano inválido!')
         plano = input('Digite o plano do usuário: ')
 
+    # Lê e valida a data de adesão
     data_adesao = input('Digite a data de adesão do usuário: ')
     validate(data_adesao, validateDate)
 
+    # Lê e valida a data de vencimento
     data_venc = input('Digite a data de vencimento do usuário: ')
     validate(data_venc, validateDate)
+    # Verifica se a data de vencimento é válida
     while datetime.strptime(data_venc, "%d-%m-%Y") < datetime.strptime(data_adesao, "%d-%m-%Y") or datetime.strptime(data_venc, "%d-%m-%Y") < datetime.today():
         print('Data de vencimento inválida!')
         data_venc = input('Digite a data de vencimento do usuário: ')
         validate(data_venc, validateDate)
 
+    # Máscara da query para inserção do usuário
     sql = '''
     insert into usuario (
         cpf, nome, data_nasc, pais, estado,
@@ -167,16 +194,18 @@ def insertUsuario(db):
     )
     '''
 
+    # Valores a serem inseridos
     valores = (
         cpf, nome, data_nasc, pais, estado,
         cidade, cep, rua, numero, plano,
         data_adesao, data_venc
     )
 
-    db.executeSQLValores(sql, valores)
-    db.commit()
+    db.executeSQLValores(sql, valores) # Executa a query
+    db.commit() # Realiza o commit da inserção
     print('Usuário cadastrado com sucesso!')
 
+# Obtém o nome dos planos pessoais existentes
 def getPlanosPessoais(db):
     sql = '''
     select nome from pessoal c;
@@ -190,17 +219,18 @@ def getPlanosPessoais(db):
 
     return planos
 
-
 # Selecionar nome e data_nasc dos usuarios, com dispositivo de tipo TIPO, em	
 # todas as comunidades de ESTADO.
 def showUserDispositivoEstado(db):
+    # Lê e valida o tipo do dispositivo
     tipo = input('Digite o tipo do dispositivo: ')
     validate(tipo, validateString, maxSize=30)
 
+    # Lê e valida o estado
     estado = input('Digite o estado: ')
     validate(estado, validateString, maxSize=30)
 
-    
+    # Máscara da query
     sql = '''
     SELECT u.nome, u.data_nasc FROM usuario u,  	
 	(SELECT ud.usuario FROM usuario_dispositivo ud
@@ -212,8 +242,9 @@ def showUserDispositivoEstado(db):
 	WHERE u.cpf = usuario_consulta.usuario;
     '''
 
-    valores = (tipo, estado)
+    # Valores a serem inseridos
+    valores = (tipo.upper(), estado.upper())
 
-    db.executeSQLValores(sql, valores)
-    db.showTable()
+    db.executeSQLValores(sql, valores) # Executa a query
+    db.showTable() # Mostra a tabela
 

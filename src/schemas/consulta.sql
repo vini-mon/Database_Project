@@ -1,4 +1,3 @@
--- FINALIZADO
 -- Listar todas comunidades que receberam todos os dispositivos de uma única empresa
 SELECT c.nome, e.nome as nome_empresa, COUNT(d.nro_serie) AS qtd_dispositivos
 	FROM comunidade c
@@ -13,7 +12,6 @@ SELECT c.nome, e.nome as nome_empresa, COUNT(d.nro_serie) AS qtd_dispositivos
 	GROUP BY c.nome, e.nome
 	HAVING COUNT(DISTINCT dce.empresa) = 1;
 
--- FINALIZADO
 -- selecionar Nro de série e fabricante de todos os relays da base de dados, 
 -- para os que se conectam a outro relay com latitude maior que -7.000 e longitude menor que -65.000 
 -- retornar tambem a altitude do relay que se conecta
@@ -23,14 +21,12 @@ SELECT r1.nro_serie, r1.fabricante, r2.altitude
 	LEFT JOIN relay r2 ON r2.nro_serie = rr.relay1 AND r2.latitude > -7.000 AND r2.longitude < -65.000
 	GROUP BY r1.nro_serie, r2.altitude;
 
--- FINALIZADO
--- Listar todos os dispositivos fornecidos pelas as empresas para as comunidades.
-SELECT * FROM dispositivo d
-	JOIN dispositivo_comunidade_empresa dce ON d.nro_serie = dce.dispositivo
-	JOIN comunidade c ON dce.comunidade = c.registro
-	JOIN empresa e ON dce.empresa = e.cnpj
+-- -- Listar todos os dispositivos fornecidos pelas as empresas para as comunidades.
+-- SELECT * FROM dispositivo d
+-- 	JOIN dispositivo_comunidade_empresa dce ON d.nro_serie = dce.dispositivo
+-- 	JOIN comunidade c ON dce.comunidade = c.registro
+-- 	JOIN empresa e ON dce.empresa = e.cnpj
 
--- FINALIZADO 
 -- Selecionar nome e data_nasc dos usuarios, com dispositivo de tipo celular, em	
 -- todas as	comunidades de roraima.
 SELECT u.nome, u.data_nasc FROM usuario u,  	
@@ -61,10 +57,8 @@ SELECT t1.nome, t1.cpf, t2.cidade, t2.estado, t2.pais FROM
 		AS t2
 	ON t1.cpf = t2.cpf
 
--- OK
 -- todas as conexões de usuários/comunidades que uma estação teve em 2023
 SELECT es.nro_serie, u.nome, c.nome, d.nro_serie, d.tipo, co.data FROM estacao es
-
 	JOIN bridge b ON es.nro_serie = b.estacao
 	JOIN relay_bridge rb ON b.nro_serie = rb.bridge
 	JOIN relay r ON rb.relay = r.nro_serie
@@ -77,21 +71,19 @@ SELECT es.nro_serie, u.nome, c.nome, d.nro_serie, d.tipo, co.data FROM estacao e
 	LEFT JOIN comunidade c ON c.registro = dce.comunidade
 	WHERE DATE_PART('month', co.data) = 06
 
--- OK
 -- os maiores consumos de cada usuário
 SELECT u.nome, d.tipo, MAX(co.consumo), co.data FROM conexao co
-
 	INNER JOIN dispositivo d ON d.nro_serie = co.dispositivo
 	INNER JOIN usuario_dispositivo ud ON ud.dispositivo = d.nro_serie
 	INNER JOIN usuario u ON u.cpf = ud.usuario
 	GROUP BY u.nome, d.tipo, co.data, co.consumo
 	ORDER BY co.consumo DESC
 	
--- usuários que pertencem a, pelo menos, uma comunidade e que possua,
--- pelo menos, um dispositivo ordenados alfabeticamente
-SELECT u.*, COUNT(*) AS qtd_dispositivos
-	FROM usuario u
-	JOIN usuario_comunidade uc ON u.cpf = uc.usuario
-	JOIN usuario_dispositivo ud ON u.cpf = ud.usuario
-	GROUP BY u.cpf
-	ORDER BY u.nome
+-- -- usuários que pertencem a, pelo menos, uma comunidade e que possua,
+-- -- pelo menos, um dispositivo ordenados alfabeticamente
+-- SELECT u.*, COUNT(*) AS qtd_dispositivos
+-- 	FROM usuario u
+-- 	JOIN usuario_comunidade uc ON u.cpf = uc.usuario
+-- 	JOIN usuario_dispositivo ud ON u.cpf = ud.usuario
+-- 	GROUP BY u.cpf
+-- 	ORDER BY u.nome
