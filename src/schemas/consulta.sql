@@ -57,7 +57,7 @@ SELECT t1.nome, t1.cpf, t2.cidade, t2.estado, t2.pais FROM
 		AS t2
 	ON t1.cpf = t2.cpf
 
--- todas as conexões de usuários/comunidades que uma estação teve em 2023
+-- todas as conexões de usuários/comunidades que uma estação teve no mes de junho
 SELECT es.nro_serie, u.nome, c.nome, d.nro_serie, d.tipo, co.data FROM estacao es
 	JOIN bridge b ON es.nro_serie = b.estacao
 	JOIN relay_bridge rb ON b.nro_serie = rb.bridge

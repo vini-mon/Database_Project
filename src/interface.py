@@ -115,10 +115,15 @@ def showPlanosComunitarios(db):
 # Realiza a inserção de um novo usuário no banco
 def insertUsuario(db):
     planosExistentes = getPlanosPessoais(db) # Armazena os planos existentes
+    usuariosExistentes = getUsuarios(db) # Armazena os usuários existentes
 
-    # Lê e valida o cpf
+    # Lê e valida o cpf, verificando se já existe
     cpf = input('Digite o CPF do usuário (xxx.xxx.xxx-xx): ')
     validate(cpf, validateCPF, notnull=True)
+    while cpf in usuariosExistentes:
+        print('CPF já cadastrado!')
+        cpf = input('Digite o CPF do usuário: ')
+        validate(cpf, validateCPF, notnull=True)
 
     # Lê e valida o nome
     nome = input('Digite o nome do usuário (a-zA-Z): ')
@@ -204,6 +209,19 @@ def insertUsuario(db):
     db.executeSQLValores(sql, valores) # Executa a query
     db.commit() # Realiza o commit da inserção
     print('Usuário cadastrado com sucesso!')
+
+def getUsuarios(db):
+    sql = '''
+    select cpf from usuario;
+    '''
+    db.executeSQL(sql)
+    result = db.getTable()
+
+    usuarios = []
+    for row in result:
+        usuarios.append(row[0])
+
+    return usuarios
 
 # Obtém o nome dos planos pessoais existentes
 def getPlanosPessoais(db):
