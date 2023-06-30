@@ -66,6 +66,7 @@ INSERT INTO dispositivo (nro_serie, tipo) values ('7sRkk7usqKXaHiBnbq38k9pkqALA3
 INSERT INTO dispositivo (nro_serie, tipo) values ('kKR3ap6TQTJ7eqxX2knpP2wSRdxpFc', 'celular');
 INSERT INTO dispositivo (nro_serie, tipo) values ('r6c4TndrUJG4cdpUPQb3H5kLvF5eJC', 'celular');
 INSERT INTO dispositivo (nro_serie, tipo) values ('YFXr3cug58LvhmqRaF8dqTL59V4KY5', 'drone');
+INSERT INTO dispositivo (nro_serie, tipo) values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', 'drone');
 
 
 -- ## Tabela Usuário_Dispositivo ##
@@ -120,6 +121,8 @@ INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
     values ('QTg8pjD6Bqm2e3Eqwdk4Sdah8nRxEb', '56.693.744/0001-93', 4);
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
     values ('kKR3ap6TQTJ7eqxX2knpP2wSRdxpFc', '13.648.825/0001-69', 3);
+INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
+    values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', '13.648.825/0001-69', 4);
 
 
 -- ## Tabela Estação ##

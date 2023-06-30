@@ -130,8 +130,6 @@ create table dispositivo_comunidade_empresa(
     empresa char(18),
     comunidade integer not null, -- registro da comunidade
 
-    unique(dispositivo, comunidade),
-
     constraint pk_dispositivo_comunidade_empresa primary key (dispositivo, empresa),
     constraint fk1_dispositivo_comunidade_empresa foreign key (dispositivo) references dispositivo(nro_serie) on delete cascade,
     constraint fk2_dispositivo_comunidade_empresa foreign key (empresa) references empresa(cnpj) on delete cascade,
