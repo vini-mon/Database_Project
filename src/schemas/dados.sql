@@ -34,28 +34,28 @@ INSERT INTO beneficio_comunitario (plano, beneficio) values ('Comunitario Extra'
 -- ## Tabela usuário ##
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('444.136.372-91', 'João da Silva Santos', TO_DATE('1985-06-29', 'YYYY-MM-DD'), 'Brasil', 'Amazonas', 'Anori', '69440-000', 'R. Prof. Almir', 326, 'Pessoal Simples', TO_DATE('2015-04-05', 'YYYY-MM-DD'), TO_DATE('2025-04-05', 'YYYY-MM-DD'));
+values ('444.136.372-91', 'João da Silva Santos', TO_DATE('29-06-1985', 'DD-MM-YYYY'), 'Brasil', 'Amazonas', 'Anori', '69440-000', 'R. Prof. Almir', 326, 'Pessoal Simples', TO_DATE('05-04-2015', 'DD-MM-YYYY'), TO_DATE('05-04-2025', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('011.654.052-45', 'Maria Oliveira Costa', TO_DATE('1990-09-18', 'YYYY-MM-DD'), 'Brasil', 'Acre', 'Xapuri', '69930-000', 'R. Marcos Antonio Gonçalves', 317, 'Pessoal Simples', TO_DATE('2018-10-29', 'YYYY-MM-DD'), TO_DATE('2024-10-29', 'YYYY-MM-DD'));
+values ('011.654.052-45', 'Maria Oliveira Costa', TO_DATE('18-09-1990', 'DD-MM-YYYY'), 'Brasil', 'Acre', 'Xapuri', '69930-000', 'R. Marcos Antonio Gonçalves', 317, 'Pessoal Simples', TO_DATE('29-10-2014', 'DD-MM-YYYY'), TO_DATE('29-10-2024', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('465.040.701-05', 'José Oliveira Costa', TO_DATE('1978-07-24', 'YYYY-MM-DD'), 'Brasil', 'Acre', 'Mâncio Lima', '69990-000', 'R. Osvaldo Correia De Santana', 813, 'Pessoal Extra', TO_DATE('2016-08-05', 'YYYY-MM-DD'), TO_DATE('2023-08-05', 'YYYY-MM-DD'));
+values ('465.040.701-05', 'José Oliveira Costa', TO_DATE('24-07-1978', 'DD-MM-YYYY'), 'Brasil', 'Acre', 'Mâncio Lima', '69990-000', 'R. Osvaldo Correia De Santana', 813, 'Pessoal Extra', TO_DATE('05-08-2016', 'DD-MM-YYYY'), TO_DATE('05-08-2023', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('378.697.441-15', 'Carlos Lima Costa', TO_DATE('2000-09-03', 'YYYY-MM-DD'), 'Brasil', 'Tocantis', 'Recursolândia', '77733-000', 'Rua Goiás', 366, 'Pessoal Simples', TO_DATE('2022-02-05', 'YYYY-MM-DD'), TO_DATE('2025-02-05', 'YYYY-MM-DD'));
+values ('378.697.441-15', 'Carlos Lima Costa', TO_DATE('03-09-2000', 'DD-MM-YYYY'), 'Brasil', 'Tocantis', 'Recursolândia', '77733-000', 'Rua Goiás', 366, 'Pessoal Simples', TO_DATE('05-02-2022', 'DD-MM-YYYY'), TO_DATE('05-02-2025', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('216.360.432-24', 'Ana Silva Santos', TO_DATE('1996-10-25', 'YYYY-MM-DD'), 'Brasil', 'Roraima', 'Uiramutã', '69358-000', 'R. Manoel Vieira', 289, 'Pessoal Extra', TO_DATE('2019-07-14', 'YYYY-MM-DD'), TO_DATE('2024-07-14', 'YYYY-MM-DD'));
+values ('216.360.432-24', 'Ana Silva Santos', TO_DATE('25-10-1996', 'DD-MM-YYYY'), 'Brasil', 'Roraima', 'Uiramutã', '69358-000', 'R. Manoel Vieira', 289, 'Pessoal Extra', TO_DATE('14-07-2019', 'DD-MM-YYYY'), TO_DATE('14-07-2024', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('275.485.772-90', 'Lucas Almeida Pereira', TO_DATE('1992-06-15', 'YYYY-MM-DD'), 'Brasil', 'Amazonas', 'Tonantins', '69685-000', 'R. Álvaro Maia', 186, 'Pessoal Simples', TO_DATE('2010-05-13', 'YYYY-MM-DD'), TO_DATE('2025-05-13', 'YYYY-MM-DD'));
+values ('275.485.772-90', 'Lucas Almeida Pereira', TO_DATE('15-06-1992', 'DD-MM-YYYY'), 'Brasil', 'Amazonas', 'Tonantins', '69685-000', 'R. Álvaro Maia', 186, 'Pessoal Simples', TO_DATE('13-05-2010', 'DD-MM-YYYY'), TO_DATE('13-05-2025', 'DD-MM-YYYY'));
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('500.047.672-76', 'Pedro Almeida Fernandes', TO_DATE('1991-11-02', 'YYYY-MM-DD'), 'Brasil', 'Roraima', 'Amajari', '69343-000', 'Avenida José Altino', 276, 'Pessoal Padrão', null ,null);
+values ('500.047.672-76', 'Pedro Almeida Fernandes', TO_DATE('02-11-1991', 'DD-MM-YYYY'), 'Brasil', 'Roraima', 'Amajari', '69343-000', 'Avenida José Altino', 276, 'Pessoal Padrão', null ,null);
 
 INSERT INTO usuario (cpf, nome, data_nasc, pais, estado, cidade, cep, rua, numero, plano, data_adesao, data_venc)
-values ('864.076.055-12', 'Guilherme Gomes Ribeiro', TO_DATE('1991-11-02', 'YYYY-MM-DD'), 'Brasil', 'Roraima', 'Amajari', '69343-000', 'Avenida José Altino', 284, 'Pessoal Padrão', null ,null);
+values ('864.076.055-12', 'Guilherme Gomes Ribeiro', TO_DATE('02-11-1991', 'DD-MM-YYYY'), 'Brasil', 'Roraima', 'Amajari', '69343-000', 'Avenida José Altino', 284, 'Pessoal Padrão', null ,null);
 
 
 -- ## Tabela Dispositivo ##
@@ -68,6 +68,8 @@ INSERT INTO dispositivo (nro_serie, tipo) values ('r6c4TndrUJG4cdpUPQb3H5kLvF5eJ
 INSERT INTO dispositivo (nro_serie, tipo) values ('YFXr3cug58LvhmqRaF8dqTL59V4KY5', 'drone');
 INSERT INTO dispositivo (nro_serie, tipo) values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', 'drone');
 
+INSERT INTO dispositivo (nro_serie, tipo) values ('H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', 'celular');
+
 
 -- ## Tabela Usuário_Dispositivo ##
 
@@ -77,16 +79,17 @@ INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('7sRkk7usqKXaHiBn
 INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('kKR3ap6TQTJ7eqxX2knpP2wSRdxpFc', '444.136.372-91');
 INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('r6c4TndrUJG4cdpUPQb3H5kLvF5eJC', '500.047.672-76');
 INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('YFXr3cug58LvhmqRaF8dqTL59V4KY5', '864.076.055-12');
+INSERT INTO usuario_dispositivo (dispositivo, usuario) values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', '465.040.701-05');
 
 
 -- ## Tabela Comunidade ##
 
 INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values (1, 'Vila Tepequém', 150, 'Pedro Souza Mendes', 'Brasil', 'Roraima', 'Amajari', null, 'Comunitario Simples', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
+    values (1, 'Vila Tepequém', 150, 'Pedro Souza Mendes', 'Brasil', 'Roraima', 'Amajari', null, 'Comunitario Simples', TO_DATE('14-11-2021', 'DD-MM-YYYY'), TO_DATE('14-11-2023', 'DD-MM-YYYY'));
 INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values (2, 'Aldeia Txoude', 50, 'Iaci Araraí Menezes', 'Brasil', 'Tocantins', 'Lagoa da Confusão', null, 'Comunitario Extra', TO_DATE('2012-11-14', 'YYYY-MM-DD'), TO_DATE('2030-11-14', 'YYYY-MM-DD'));
+    values (2, 'Aldeia Txoude', 50, 'Iaci Araraí Menezes', 'Brasil', 'Tocantins', 'Lagoa da Confusão', null, 'Comunitario Extra', TO_DATE('14-11-2012', 'DD-MM-YYYY'), TO_DATE('20-11-2023', 'DD-MM-YYYY'));
 INSERT INTO comunidade (registro, nome, qtd_membros, representante, pais, estado, cidade, complemento, plano, data_adesao, data_venc)
-    values (3, '4° Pelotão Especial de Fronteira', 250, 'Luiz Alves Pereira', 'Brasil', 'Roraima', 'Alto Alegre', null, 'Comunitario Padrão', TO_DATE('2020-01-01', 'YYYY-MM-DD'), TO_DATE('2030-01-01', 'YYYY-MM-DD'));
+    values (3, 'Aldeia Vila Mélia do Rio Jacaré', 250, 'Luiz Alves Pereira', 'Brasil', 'Roraima', 'Alto Alegre', null, 'Comunitario Padrão', TO_DATE('01-01-2021', 'DD-MM-YYYY'), TO_DATE('01-12-2023', 'DD-MM-YYYY'));
 
 
 -- ## Tabela Usuário_Comunidade ##
@@ -124,6 +127,8 @@ INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
 INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
     values ('UkNv4PSovX8YGhCLH75q9ePRhJRQ62', '13.648.825/0001-69', 3);
 
+INSERT INTO dispositivo_comunidade_empresa (dispositivo, empresa, comunidade)
+    values ('H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', '13.648.825/0001-69', 3);
 
 -- ## Tabela Estação ##
 
@@ -237,11 +242,24 @@ INSERT INTO relay_bridge (relay, bridge) values ('48N8PrySoH5ycnbutMtRZ58KSa7gxH
 
 INSERT INTO relay_dispositivo (relay, dispositivo) values ('48N8PrySoH5ycnbutMtRZ58KSa7gxH', 'rdQTBimmruuepJiDmVxC3J7gHYMNTj');
 INSERT INTO relay_dispositivo (relay, dispositivo) values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'YFXr3cug58LvhmqRaF8dqTL59V4KY5');
+INSERT INTO relay_dispositivo (relay, dispositivo) values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC');
 
 
 -- ## Tabela Conexão ##
 
 INSERT INTO conexao (relay, dispositivo, data, consumo)
-    values ('48N8PrySoH5ycnbutMtRZ58KSa7gxH', 'rdQTBimmruuepJiDmVxC3J7gHYMNTj', TO_DATE('2023-06-29 15:30:00', 'YYYY-MM-DD HH24:MI:SS'), 0);
+    values ('48N8PrySoH5ycnbutMtRZ58KSa7gxH', 'rdQTBimmruuepJiDmVxC3J7gHYMNTj', TO_DATE('29-05-2023 15:30:00', 'DD-MM-YYYY HH24:MI:SS'), 0);
 INSERT INTO conexao (relay, dispositivo, data, consumo)
-    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'YFXr3cug58LvhmqRaF8dqTL59V4KY5', TO_DATE('2023-06-27 20:11:52', 'YYYY-MM-DD HH24:MI:SS'), 5182);
+    values ('48N8PrySoH5ycnbutMtRZ58KSa7gxH', 'rdQTBimmruuepJiDmVxC3J7gHYMNTj', TO_DATE('29-06-2023 15:30:00', 'DD-MM-YYYY HH24:MI:SS'), 215);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'YFXr3cug58LvhmqRaF8dqTL59V4KY5', TO_DATE('27-06-2023 20:11:52', 'DD-MM-YYYY HH24:MI:SS'), 5182);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', TO_DATE('04-04-2023 02:11:52', 'DD-MM-YYYY HH24:MI:SS'), 518);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', TO_DATE('05-06-2023 20:12:52', 'DD-MM-YYYY HH24:MI:SS'), 118);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', TO_DATE('04-06-2023 20:11:53', 'DD-MM-YYYY HH24:MI:SS'), 318);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', TO_DATE('07-08-2023 20:11:52', 'DD-MM-YYYY HH24:MI:SS'), 58);
+INSERT INTO conexao (relay, dispositivo, data, consumo)
+    values ('PswAfV2WeYUjWVwpARWc32pKEd4QgZ', 'H6c4TndrUJG4cdpUPQb3H5kLvF5eJC', TO_DATE('08-03-2023 20:11:52', 'DD-MM-YYYY HH24:MI:SS'), 518);

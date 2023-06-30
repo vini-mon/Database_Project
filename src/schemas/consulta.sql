@@ -1,6 +1,6 @@
 -- FINALIZADO
 -- Listar todas comunidades que receberam todos os dispositivos de uma única empresa
-SELECT c.nome, e.nome, COUNT(d.nro_serie) AS qtd_dispositivos
+SELECT c.nome, e.nome as nome_empresa, COUNT(d.nro_serie) AS qtd_dispositivos
 	FROM comunidade c
 	JOIN dispositivo_comunidade_empresa dce ON c.registro = dce.comunidade
 	JOIN empresa e ON dce.empresa = e.cnpj
@@ -30,22 +30,62 @@ SELECT * FROM dispositivo d
 	JOIN comunidade c ON dce.comunidade = c.registro
 	JOIN empresa e ON dce.empresa = e.cnpj
 
--- Listar os cpf e nome dos clientes que possuem um plano extra mesmo a comunidade
--- a que ele pertence possuindo um plano extra.
--- Daqueles que se encontram no hemisfério sul, listar o país e a cidade do cliente.
-select 
-	from 
+-- FINALIZADO 
+-- Selecionar nome e data_nasc dos usuarios, com dispositivo de tipo celular, em	
+-- todas as	comunidades de roraima.
+SELECT u.nome, u.data_nasc FROM usuario u,  	
+	(SELECT ud.usuario FROM usuario_dispositivo ud
+		JOIN dispositivo d ON ud.dispositivo = d.nro_serie AND UPPER(d.tipo) = 'CELULAR'
+ 	INTERSECT
+ 	SELECT uc.usuario FROM usuario_comunidade uc
+		JOIN comunidade c ON uc.comunidade = c.registro AND UPPER(c.estado) = 'RORAIMA') 
+	AS usuario_consulta
+	WHERE u.cpf = usuario_consulta.usuario;
 
+-- Listar os cpf e nome de todos os clientes que possuem um plano extra e estão numa comunidade que possuem
+-- um plano extra, sendo plano extra qualquer um alem do simples.
+-- Daqueles que possuem um dispositivo que se conectam a um satelite do hemisfério sul, listar o cidade, estado e a pais do cliente.
+SELECT t1.nome, t1.cpf, t2.cidade, t2.estado, t2.pais FROM
+	(SELECT u.nome, u.cpf 
+		FROM usuario_comunidade uc 
+		JOIN comunidade c ON uc.comunidade = c.registro and UPPER(c.plano) != 'COMUNITARIO SIMPLES'
+		JOIN usuario u ON uc.usuario = u.cpf and UPPER(u.plano) != 'PESSOAL SIMPLES')
+		AS t1
+	LEFT JOIN
+	(SELECT u.cidade, u.estado, u.pais, u.cpf
+		FROM usuario u
+		JOIN usuario_dispositivo ud ON u.cpf = ud.usuario
+		JOIN dispositivo d ON d.nro_serie = ud.dispositivo
+		JOIN relay_dispositivo rd ON rd.dispositivo = d.nro_serie
+		JOIN relay r ON r.nro_serie = rd.relay AND r.latitude > -90 AND r.latitude < 0)
+		AS t2
+	ON t1.cpf = t2.cpf
 
+-- OK
+-- todas as conexões de usuários/comunidades que uma estação teve em 2023
+SELECT es.nro_serie, u.nome, c.nome, d.nro_serie, d.tipo, co.data FROM estacao es
 
+	JOIN bridge b ON es.nro_serie = b.estacao
+	JOIN relay_bridge rb ON b.nro_serie = rb.bridge
+	JOIN relay r ON rb.relay = r.nro_serie
+	JOIN relay_relay rr ON r.nro_serie = rr.relay1 
+	JOIN conexao co ON co.relay = r.nro_serie
+	JOIN dispositivo d ON d.nro_serie = co.dispositivo
+	LEFT JOIN dispositivo_comunidade_empresa dce ON dce.dispositivo = d.nro_serie
+	LEFT JOIN usuario_dispositivo ud ON ud.dispositivo = d.nro_serie
+	LEFT JOIN usuario u ON u.cpf = ud.usuario
+	LEFT JOIN comunidade c ON c.registro = dce.comunidade
+	WHERE DATE_PART('month', co.data) = 06
 
+-- OK
+-- os maiores consumos de cada usuário
+SELECT u.nome, d.tipo, MAX(co.consumo), co.data FROM conexao co
 
-
-
-
-
-
-
+	INNER JOIN dispositivo d ON d.nro_serie = co.dispositivo
+	INNER JOIN usuario_dispositivo ud ON ud.dispositivo = d.nro_serie
+	INNER JOIN usuario u ON u.cpf = ud.usuario
+	GROUP BY u.nome, d.tipo, co.data, co.consumo
+	ORDER BY co.consumo DESC
 	
 -- usuários que pertencem a, pelo menos, uma comunidade e que possua,
 -- pelo menos, um dispositivo ordenados alfabeticamente
@@ -55,22 +95,3 @@ SELECT u.*, COUNT(*) AS qtd_dispositivos
 	JOIN usuario_dispositivo ud ON u.cpf = ud.usuario
 	GROUP BY u.cpf
 	ORDER BY u.nome
-	 
--- Selecionar nome e data_nasc dos usuarios, com dispositivo de tipo celular, em	
--- todas as	comunidades de roraima.
-SELECT nome, data_nasc FROM usuario u WHERE EXISTS 
-		((SELECT ud.usuario FROM usuario_dispositivo ud
-			JOIN dispositivo d ON ud.dispositivo = d.nro_serie AND UPPER(d.tipo) = 'CELULAR')
- 		INTERSECT
- 		(SELECT uc.usuario FROM usuario_comunidade uc
-			JOIN comunidade c ON uc.comunidade = c.registro AND UPPER(c.estado) = 'RORAIMA')
- 	);
-
--- possibilidade 1
-SELECT nome, data_nasc FROM usuario u WHERE NOT EXISTS 
-		((SELECT ud.usuario FROM usuario_dispositivo ud
-			JOIN dispositivo d ON ud.dispositivo = d.nro_serie AND UPPER(d.tipo) = 'CELULAR')
- 		EXCEPT
- 		(SELECT uc.usuario FROM usuario_comunidade uc
-			JOIN comunidade c ON uc.comunidade = c.registro AND UPPER(c.estado) = 'RORAIMA')
- 	);

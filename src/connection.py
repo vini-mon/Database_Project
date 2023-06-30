@@ -9,7 +9,7 @@ class Connection:
     # Inicia a conexão com o banco de dados
     def connect(self):
         # Dados de conexão
-        (host, dbname, user, password) = ('localhost', 'postgres', 'postgres', 'postgres')
+        (host, dbname, user, password) = ('localhost', 'postgres', 'postgres', 'admin')
 
         # String de conexão
         conn_string = f"host='{host}' dbname='{dbname}' user='{user}' password='{password}'"
@@ -28,9 +28,15 @@ class Connection:
     def executeSQL(self, sql):
         self.cursor.execute(sql)
 
+    def executeSQLValores(self, sql, valores):
+        self.cursor.execute(sql, valores)
+
     # Finaliza uma transação
     def commit(self):
         self.conn.commit()
+
+    def getTable(self):
+        return self.cursor.fetchall()
 
     def showTable(self):
         # Obtem os resultados
@@ -48,7 +54,5 @@ class Connection:
 
         # Exibe a tabela
         print(table)
-
-
 
     
